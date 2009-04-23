@@ -1,16 +1,3 @@
-#summary Description of the input format of HyLoRes and HTab
-
-= Introduction =
-
-todo
-
-
-= Details =
-
-todo
-
-= Example =
-
 {{{
 % Input file in the format of hylolib 1.3
 
