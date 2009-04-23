@@ -8,3 +8,44 @@ todo
 = Details =
 
 todo
+
+= Example =
+
+{{{
+% Input file in the format of hylolib 1.3
+
+% first, define the signature of the language
+
+signature
+{
+
+propositions { grand, fort, beau }
+nominals     { alice, bob, jean, marie }
+relations    { aime, U : {universal}  }
+
+}
+
+% Then the theory.
+% Just putting "true" accounts for an empty theory
+
+theory {
+ [U]((grand & fort) --> beau);
+
+ alice: ( fort  & !grand);
+ bob: ( grand & !fort ) ;
+
+ (alice:bob) v jean:<aime>marie
+}
+
+% Then the reasoning tasks, done against the background theory.
+% Here, "out1" and "out2" are the files where the (counter)-models will
+% be written if they exist.
+
+query (satisfiable? , "out1") {
+ alice:jean
+}
+
+query (valid? , "out2") {
+ alice:bob
+}
+}}}
