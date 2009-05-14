@@ -1,0 +1,5 @@
+#summary One-sentence summary of this page.
+
+= Compiling with GHC 6.10 =
+
+Assuming GHC is installed in your $HOME, see http://haskell.org/gtk2hs/archives/2009/05/10/gtk2hs-0101-released/ to install gtk2hs.
