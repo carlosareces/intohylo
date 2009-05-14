@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary HyLoRun, the GUI front-end to HTab and HyLoRes
 
 = Compiling with GHC 6.10 =
 
