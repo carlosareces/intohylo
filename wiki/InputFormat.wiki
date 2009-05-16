@@ -8,7 +8,7 @@ signature
 
 propositions { grand, fort, beau }
 nominals     { alice, bob, jean, marie }
-relations    { aime, U : {universal}  }
+relations    { aime, know : {reflexive}, U : {universal}  }
 
 }
 
