@@ -6,9 +6,14 @@
 signature
 {
 
-propositions { grand, fort, beau }
+propositions { tall, strong, pretty, naive }
 nominals     { alice, bob, jean, marie }
-relations    { aime, know : {reflexive}, U : {universal}  }
+relations    { love,
+               lovedBy : {inverseof love},
+               canManipulate : {trclosureof lovedBy},
+               know : {reflexive},
+               youngerThan : {transitive},
+               U : {universal}  }
 
 }
 
@@ -16,12 +21,17 @@ relations    { aime, know : {reflexive}, U : {universal}  }
 % Just putting "true" accounts for an empty theory
 
 theory {
- [U]((grand & fort) --> beau);
+ [U]((tall & strong) --> pretty);
 
- alice: ( fort  & !grand);
- bob: ( grand & !fort ) ;
+ alice: ( strong  & !tall & !naive);
+ bob: ( tall & !strong ) ;
 
- (alice:bob) v jean:<aime>marie
+ (alice:bob) v jean:<love>marie;
+
+ bob:[lovedBy]naive;
+ alice:<youngerThan>marie;
+ marie:<youngerThan>bob;
+ bob:<youngerThan>jean
 }
 
 % Then the reasoning tasks, done against the background theory.
@@ -29,7 +39,7 @@ theory {
 % be written if they exist.
 
 query (satisfiable? , "out1") {
- alice:jean
+ alice:<canManipulate>jean
 }
 
 query (valid? , "out2") {
