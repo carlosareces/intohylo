@@ -13,6 +13,7 @@ relations    { love,
                canManipulate : {trclosureof lovedBy},
                know : {reflexive},
                youngerThan : {transitive},
+               touches : {symmetric},
                U : {universal}  }
 
 }
@@ -29,6 +30,7 @@ theory {
  (alice:bob) v jean:<love>marie;
 
  bob:[lovedBy]naive;
+
  alice:<youngerThan>marie;
  marie:<youngerThan>bob;
  bob:<youngerThan>jean
@@ -42,7 +44,16 @@ query (satisfiable? , "out1") {
  alice:<canManipulate>jean
 }
 
-query (valid? , "out2") {
+query (satisfiable? , "out2") {
+ bob:<touches>jean;
+ marie:<touches>jean;
+ jean:[touches]naive
+
+}
+
+query (valid? , "out3") {
  alice:bob
 }
+
+
 }}}
