@@ -5,8 +5,9 @@
 || universal modality  || yes (nt) || yes || yes (nt) ||
 || down-arrow  || yes || yes || yes ||
 || converse modality || yes || no || yes ||
-|| reflexive frames || no || yes`*` || yes ||
-|| transitive frames || no || yes`*` || yes (nt) ||
+|| reflexive relations || no || yes`*` || yes ||
+|| symmetric relations || no || yes`*` || yes ||
+|| transitive relations || no || yes`*` || yes (nt) ||
 || multiple queries || no || yes`*` || no ||
 
 _Legend:
