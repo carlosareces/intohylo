@@ -31,4 +31,12 @@ tr : {trclosureof r},
 invtr : { inverseof tr}
 }}}
 
-will work as expected.
+will work as expected. But deep combinations will not work:
+
+{{{
+r , 
+tr : {trclosureof r},
+invtr : { inverseof tr},
+tr2 : {trclosureof invtr },
+invtr2 : { inverseof tr2}
+}}}
