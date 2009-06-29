@@ -1,3 +1,7 @@
+=HTab=
+
+==What HTab understands==
+
 The input format used in HTab 1.5 enables the user to define relations with certains conditions. Nevertheless, HTab does not handle, as of now, every constraint. For instance, the following:
 
 {{{
@@ -40,3 +44,8 @@ invtr : { inverseof tr},
 tr2 : {trclosureof invtr },
 invtr2 : { inverseof tr2}
 }}}
+
+
+==HTab model building==
+
+After reading the input, names of converse modalities and reflexive-transitive closure modalities are forgotten and replaced by the name of the initial relation. Also, in the built model, only the initial relation(s) appear.
