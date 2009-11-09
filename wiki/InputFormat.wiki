@@ -12,10 +12,14 @@ relations    { love,
                lovedBy : {inverseof love},
                canManipulate : {trclosureof lovedBy},
                know : {reflexive},
-               youngerThan : {transitive},
                touches : {symmetric},
-               U : {universal}  }
-
+               U : {universal},
+               fatherOf,
+               motherOf,
+               parentOf : {equals {fatherOf,motherOf}},
+               childOf : {inverseof parentOf},
+               youngerThan : {transitive, subsetof childOf}
+             }
 }
 
 % Then the theory.
@@ -34,6 +38,9 @@ theory {
  alice:<youngerThan>marie;
  marie:<youngerThan>bob;
  bob:<youngerThan>jean
+
+ unknown:<parentOf>alice
+
 }
 
 % Then the reasoning tasks, done against the background theory.
@@ -55,5 +62,8 @@ query (valid? , "out3") {
  alice:bob
 }
 
+query (retrieve , "retrieve1") {
+ <youngerThan>jean
+}
 
 }}}
