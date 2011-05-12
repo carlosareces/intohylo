@@ -13,7 +13,7 @@ end
 Executing htab on these formulas is done with this call:
 
 {{{
-$ htab --simple -f test.frm
+$ htab -f test.frm
 == Checking theory satisfiability ==
 * Satisfiability task
 The formula is satisfiable.
