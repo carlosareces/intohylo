@@ -10,15 +10,15 @@ propositions { tall, strong, pretty, naive }
 nominals     { alice, bob, jean, marie }
 relations    { love,
                lovedBy : {inverseof love},
-               canManipulate : {trclosureof lovedBy},
                know : {reflexive},
                touches : {symmetric},
                U : {universal},
                fatherOf,
                motherOf,
-               parentOf : {equals {fatherOf,motherOf}},
+               olderThan : {transitive},
+               parentOf : {equals {fatherOf,motherOf}, subsetof olderThan},
                childOf : {inverseof parentOf},
-               youngerThan : {transitive, subsetof childOf}
+               youngerThan : {inverseof olderThan}
              }
 }
 
@@ -48,17 +48,13 @@ theory {
 % be written if they exist.
 
 query (satisfiable? , "out1") {
- alice:<canManipulate>jean
-}
-
-query (satisfiable? , "out2") {
  bob:<touches>jean;
  marie:<touches>jean;
  jean:[touches]naive
 
 }
 
-query (valid? , "out3") {
+query (valid? , "out2") {
  alice:bob
 }
 
