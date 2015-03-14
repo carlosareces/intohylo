@@ -1,0 +1,33 @@
+We recommend using `htab -h` to see the available options.
+
+Here is an example run of htab with the simple (old) input format:
+
+```
+begin
+A(p1 <--> p3) v A(p1 <--> -n2);
+<>[](p1 v p2) & []<>(p1 v p2) & <><>(p1) & <><>(p2);
+n1: <>(n1 <--> p2);      n2: <>(n2 <--> p1)
+end
+```
+
+Executing htab on these formulas is done with this call:
+
+```
+$ htab -f test.frm
+== Checking theory satisfiability ==
+* Satisfiability task
+The formula is satisfiable.
+(final statistics)
+begin
+----------------------------------
+Closed branches: 8
+----------------------------------
+end
+Task time:4.0e-3
+
+All tasks successful.
+```
+
+
+The argument `-m filename` can be added in order to generate
+a model and dump it into the file `filename`.

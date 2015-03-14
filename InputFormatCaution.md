@@ -1,0 +1,51 @@
+# HTab #
+
+## What HTab understands ##
+
+The input format used in HTab 1.5 enables the user to define relations with certains conditions. Nevertheless, HTab does not handle, as of now, every constraint. For instance, the following:
+
+```
+r ,
+inv : { inverseof r , transitive }
+```
+
+does not enforce r to be transitive. In fact, inv will also not be transitive. The accepter way of doing so is:
+
+```
+r : {transitive },
+inv : { inverseof r }
+```
+
+So the rule of thumb is : specify relation properties at the highest level in the "hierarchy of definitions".
+
+HTab accepts interaction between transitive closures and converse of formulas, for instance:
+
+```
+r ,
+inv : {inverseof r},
+invtr : { trclosureof inv}
+```
+
+and
+
+
+```
+r ,
+tr : {trclosureof r},
+invtr : { inverseof tr}
+```
+
+will work as expected. But deep combinations will not work:
+
+```
+r , 
+tr : {trclosureof r},
+invtr : { inverseof tr},
+tr2 : {trclosureof invtr },
+invtr2 : { inverseof tr2}
+```
+
+
+## HTab model building ##
+
+After reading the input, names of converse modalities and reflexive-transitive closure modalities are forgotten and replaced by the name of the initial relation. Also, in the built model, only the initial relation(s) appear.

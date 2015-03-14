@@ -1,0 +1,60 @@
+
+```
+INPUTFILE =
+  signature '{' (automatic | NOTAUTOMATIC) '}'
+  [  proverparameters '{' (prover '(' PROVERNAME ')'
+                            '{' ATRIBUTEVALUELIST '}')+ '}']
+  theory '{' FORMULALIST '}'
+  (query '(' QUERYTYPE [, FILENAME ] ')' '{' FORMULALIST '}' )*
+
+NOTAUTOMATIC =
+  (  propositions '{' PROPOSITIONLIST '}'
+   | nominals '{' NOMINALLIST '}'
+   | relations '{' RELATIONLIST '}' )*
+
+PROPOSITIONLIST = (| VARIABLE
+                  | VARIABLE ',' PROPOSITIONLIST)
+
+NOMINALLIST = (| VARIABLE
+              | VARIABLE ',' NOMINALLIST)
+
+RELATIONLIST = (| VARIABLE
+               | VARIABLE ',' RELATIONLIST
+               | VARIABLE '{' RELPROPERTIES '}'
+               | VARIABLE '{' RELPROPERTIES '}' ',' RELATIONLIST
+
+RELPROPERTIES = (| UNARYPROPERTY
+                | BINARYPROPERTY
+                | UNARYPROPERTY  ',' RELPROPERTIES
+                | BINARYPROPERTY ',' RELPROPERTIES)
+
+UNARYPROPERTY = (  universal
+                | difference
+                | reflexive
+                | transitive
+                | symmetric )
+
+TINARYPROPERTY = (  subsetof VARIABLE
+                 | inverseof VARIABLE
+                 | tclosureof VARIABLE
+                 | trclosureof VARIABLE )
+
+QUERYTIPE = (valid? | satisfiable?)
+
+ATRIBUTEVALUELIST = (| ATRIBUTE '=' VALUE
+                    | ATRIBUTE '=' VALUE ',' ATRIBUTEVALUELIST )
+
+FORMULALIST = (| FORMULA
+              | FORMULA ';' FORMULALIST)
+
+ATRIBUTE = VARIABLE
+PROVERNAME = VARIABLE
+
+FILENAME = \" ALPHANUMDOTDASHSLASH* \"
+VARIABLE = ALPHA ALPHANUMDOTDASH*
+VALUE = ALPHANUMDOTDASH+
+
+ALPHA = (a-z | A-Z)
+ALPHANUMDOTDASH = ( ALPHA | 0-9 | '-' | '_')
+ALPHANUMDOTDASHSLASH = ( ALPHA | 0-9 | '-' | '_' | '/' | '\' )
+```
